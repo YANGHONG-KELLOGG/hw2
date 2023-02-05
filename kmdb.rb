@@ -309,4 +309,22 @@ puts "========"
 puts ""
 
 # Query the cast data and loop through the results to display the cast output for each movie.
-# TODO!
+
+roles = Role.all
+
+for role in roles
+    movie = Movie.find_by({"id"=>role["movie_id"]}) # one role has only one movie
+    movie_title = movie["title"]
+
+    actor = Actor.find_by({"id"=>role["actor_id"]}) # one role has only one actor
+    actor_name = actor["name"]
+
+    role_character_name = role["character_name"]
+
+puts "#{movie_title} #{actor_name} #{role_character_name}" 
+
+end 
+
+# rails runner kmdb.rb
+# Yang Hong 02/05/2023 1:55 PM CST
+
